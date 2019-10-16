@@ -1,6 +1,7 @@
 package com.fedorrroff.custom;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
@@ -39,16 +40,17 @@ public class RatingView extends FrameLayout {
         this.textView = textView;
     }
 
-    public void setProgress(int adding) {
-        progressBarCustom.post(() -> progressBarCustom.setProgress(progressBarCustom.getProgress() + adding));
+    public void upProgress(int adding) {
+        progressBarCustom.post(() -> {
+            progressBarCustom.setProgress(progressBarCustom.getProgress() + adding);
+            if (progressBarCustom.getProgress() >= 50) {
+                progressBarCustom.setColorForeground(Color.GREEN);
+            }
+        });
     }
 
     public void setRating() {
-        textView.post(() ->  textView.setText(String.valueOf(progressBarCustom.getProgress())));
-    }
-
-    public void setInitialRating() {
-        textView.setText(String.valueOf(0));
+        textView.post(() -> textView.setText(String.valueOf(progressBarCustom.getProgress())));
     }
 
     @Override

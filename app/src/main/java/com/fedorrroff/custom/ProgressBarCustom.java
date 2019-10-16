@@ -21,7 +21,6 @@ public class ProgressBarCustom extends View {
      * Start the progress at 12 o'clock
      */
     private int startAngle = -90;
-    private int color = Color.DKGRAY;
     private RectF rectF;
     private Paint backgroundPaint;
     private Paint foregroundPaint;
@@ -59,7 +58,7 @@ public class ProgressBarCustom extends View {
         backgroundPaint.setStrokeWidth(strokeWidth);
 
         foregroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        foregroundPaint.setColor(color);
+        foregroundPaint.setColor(Color.RED);
         foregroundPaint.setStyle(Paint.Style.STROKE);
         foregroundPaint.setStrokeWidth(strokeWidth);
     }
@@ -71,5 +70,9 @@ public class ProgressBarCustom extends View {
 
     public float getProgress() {
         return this.progress;
+    }
+
+    public void setColorForeground(int color) {
+        foregroundPaint.setColor(color);
     }
 }
